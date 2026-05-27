@@ -1,0 +1,52 @@
+name: afn-afd
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build project inside Docker
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          tags: automata-compiler:latest
+          outputs: type=docker,dest=/tmp/automata-compiler.tar
+
+      - name: Load Docker image
+        run: docker load -i /tmp/automata-compiler.tar
+
+      - name: Extract dist folder from Docker
+        run: |
+          docker create --name extractor automata-compiler:latest
+          docker cp extractor:/app/dist ./dist
+          docker rm extractor
+
+      - name: Upload production artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
