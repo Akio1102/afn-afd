@@ -9,7 +9,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml* ./
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --frozen-lockfile
+    pnpm install
 
 COPY src/ ./src
 COPY public/ ./public
