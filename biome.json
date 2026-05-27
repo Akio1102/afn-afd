@@ -1,0 +1,8 @@
+{
+	"linter": {
+		"ignore": ["src/App.css"]
+	},
+	"formatter": {
+		"ignore": ["src/App.css"]
+	}
+}

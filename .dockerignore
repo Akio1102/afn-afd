@@ -1,0 +1,10 @@
+node_modules
+.app
+dist
+.rsbuild
+.github
+.biome
+README.md
+Dockerfile
+.dockerignore
+pnpm-debug.log
