@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+    --color-accent: #5245e8;
+    --color-accent-hover: #4337d4;
+    --color-accent-light: #f0effe;
+    --color-accent-mid: #c4bef8;
+    --color-accent-glow: rgba(82, 69, 232, 0.12);
+
+    --color-success: #0b8a62;
+    --color-success-bg: #f0fbf7;
+    --color-success-mid: #6ecfad;
+
+    --color-danger: #c0334a;
+    --color-danger-bg: #fff0f3;
+
+    --color-info: #0284c7;
+    --color-info-bg: #f0f8ff;
+    --color-info-mid: #7cc4ed;
+
+    --color-warn: #b45309;
+    --color-warn-bg: #fffbeb;
+
+    --color-bg: #f5f4fd;
+    --color-surface: #ffffff;
+    --color-elevated: #eeedfb;
+    --color-overlay: #e8e6f9;
+
+    --color-border-faint: rgba(100, 82, 240, 0.08);
+    --color-border-normal: rgba(100, 82, 240, 0.14);
+    --color-border-med: rgba(100, 82, 240, 0.26);
+    --color-border-strong: rgba(100, 82, 240, 0.45);
+
+    --color-text: #18152e;
+    --color-text-sub: #4d4870;
+    --color-text-muted: #8a85aa;
+    --color-text-faint: #b8b4d0;
+
+    --color-input-bg: #ffffff;
+    --color-input-border: rgba(100, 82, 240, 0.22);
+    --color-input-focus: rgba(82, 69, 232, 0.35);
+
+    --color-canvas-bg: #fafafe;
+    --color-node-circle: #ffffff;
+}
+
+.dark {
+    --color-bg: #0e0c1b;
+    --color-surface: #161328;
+    --color-elevated: #1f1c36;
+    --color-overlay: #272345;
+
+    --color-border-faint: rgba(180, 165, 255, 0.06);
+    --color-border-normal: rgba(180, 165, 255, 0.11);
+    --color-border-med: rgba(180, 165, 255, 0.2);
+    --color-border-strong: rgba(180, 165, 255, 0.38);
+
+    --color-text: #eae7ff;
+    --color-text-sub: #9d98c0;
+    --color-text-muted: #5e5a80;
+    --color-text-faint: #3a375a;
+
+    --color-accent: #9480f8;
+    --color-accent-hover: #a993ff;
+    --color-accent-light: rgba(148, 128, 248, 0.14);
+    --color-accent-mid: rgba(148, 128, 248, 0.3);
+    --color-accent-glow: rgba(148, 128, 248, 0.18);
+
+    --color-success: #2dd4a0;
+    --color-success-bg: rgba(45, 212, 160, 0.1);
+    --color-success-mid: rgba(45, 212, 160, 0.3);
+
+    --color-danger: #f06a7e;
+    --color-danger-bg: rgba(240, 106, 126, 0.1);
+
+    --color-info: #38c0f5;
+    --color-info-bg: rgba(56, 192, 245, 0.1);
+    --color-info-mid: rgba(56, 192, 245, 0.28);
+
+    --color-warn: #fbbd4e;
+    --color-warn-bg: rgba(251, 189, 78, 0.1);
+
+    --color-input-bg: #1f1c36;
+    --color-input-border: rgba(180, 165, 255, 0.18);
+    --color-input-focus: rgba(148, 128, 248, 0.4);
+
+    --color-canvas-bg: transparent;
+    --color-node-circle: #1f1c36;
+}
+
+@layer components {
+    .tab-base {
+        @apply px-4 py-1.5 text-xs font-medium border border-border-med rounded-lg cursor-pointer bg-transparent text-text-sub transition-all duration-150;
+    }
+
+    .tab-active {
+        @apply px-4 py-1.5 text-xs font-medium border border-accent rounded-lg cursor-pointer bg-accent text-white transition-all duration-150;
+    }
+
+    .section-card {
+        @apply bg-surface rounded-xl border border-border-normal p-4 mb-3.5 shadow-sm transition-colors duration-200;
+    }
+
+    .section-label {
+        @apply mb-2 text-[11px] font-semibold tracking-widest uppercase text-text-muted;
+    }
+
+    .input-base {
+        @apply w-full rounded-md border border-input-border bg-input-bg px-2.5 py-1.5 font-mono text-xs text-text outline-none transition-shadow focus:border-accent focus:ring-1 focus:ring-accent/30;
+    }
+}
